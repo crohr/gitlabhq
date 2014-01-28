@@ -1,0 +1,8 @@
+dependencies:
+  - libicu48
+  - git-core
+build_dependencies:
+  - libicu-dev
+before_precompile: ./packaging/debian/before_precompile.sh
+user: git
+group: git
