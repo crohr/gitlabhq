@@ -1,10 +1,13 @@
 targets:
-  squeeze:
+  debian-squeeze: &default
     dependencies:
       - libicu48
       - git-core
     build_dependencies:
       - libicu-dev
+  debian-wheezy: *default
+  ubuntu-lucid: *default
+  ubuntu-precise: *default
 before_precompile: ./packaging/debian/before_precompile.sh
 user: git
 group: git
