@@ -1,13 +1,17 @@
 #!/bin/sh
-# This script copies the necessary .yml and .rb config files, based of the .example files.
+# This script copies the necessary .yml and .rb config files, based on the
+# .example files.
+#
+# It also starts a postgresql and redis server, which are required for certain
+# rake tasks (like asset precompilation).
 
-set -ex
+set -e
 
 for file in config/*.example; do
-  cp $file config/$(basename $file .example)
+  cp -v $file config/$(basename $file .example)
 done
 
-cp config/database.yml{.mysql,}
+cp -v config/database.yml{.postgresql,}
 
-service postgresql start
-service redis-server start
+sudo service postgresql start
+sudo service redis-server start
