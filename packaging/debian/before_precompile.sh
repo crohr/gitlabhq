@@ -8,3 +8,6 @@ for file in config/*.example; do
 done
 
 cp config/database.yml{.mysql,}
+
+service postgresql start
+service redis-server start
